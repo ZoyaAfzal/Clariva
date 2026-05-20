@@ -1,0 +1,175 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--sky);
+  --color-gold-soft: var(--sky-soft);
+  --color-ivory: var(--ice);
+  --color-forest: var(--ocean);
+  --color-forest-deep: var(--ocean-deep);
+  --color-sage: var(--river);
+  --color-charcoal: var(--charcoal);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand - Sky Blue Theme */
+  --ocean: oklch(0.35 0.08 245);           /* Deep Ocean Blue */
+  --ocean-deep: oklch(0.2 0.05 245);        /* Near black blue */
+  --sky: oklch(0.72 0.14 215);              /* Bright Sky Blue */
+  --sky-soft: oklch(0.92 0.04 215);
+  --ice: oklch(0.98 0.01 215);              /* Very light blue/white */
+  --river: oklch(0.65 0.06 230);            /* Muted blue */
+  --charcoal: oklch(0.22 0 0);
+
+  /* Semantic mapping (light theme) */
+  --background: var(--ice);
+  --foreground: var(--charcoal);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--charcoal);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--ocean);
+  --primary-foreground: oklch(0.985 0.005 215);
+  --secondary: oklch(0.94 0.02 215);
+  --secondary-foreground: var(--ocean);
+  --muted: oklch(0.94 0.02 215);
+  --muted-foreground: oklch(0.45 0.05 245);
+  --accent: var(--sky);
+  --accent-foreground: var(--ocean-deep);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.02 215);
+  --input: oklch(0.9 0.02 215);
+  --ring: var(--sky);
+
+  --shadow-soft: 0 10px 40px -10px oklch(0.35 0.08 245 / 0.15);
+  --shadow-sky: 0 20px 50px -20px oklch(0.72 0.14 215 / 0.3);
+}
+
+.dark {
+  --background: var(--ocean-deep);
+  --foreground: oklch(0.985 0.005 215);
+  --card: oklch(0.24 0.06 245);
+  --card-foreground: oklch(0.985 0.005 215);
+  --popover: oklch(0.24 0.06 245);
+  --popover-foreground: oklch(0.985 0.005 215);
+  --primary: var(--sky);
+  --primary-foreground: var(--ocean-deep);
+  --secondary: oklch(0.28 0.06 245);
+  --secondary-foreground: oklch(0.985 0.005 215);
+  --muted: oklch(0.28 0.06 245);
+  --muted-foreground: oklch(0.72 0.05 230);
+  --accent: var(--sky);
+  --accent-foreground: var(--ocean-deep);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--sky);
+    color: var(--ocean-deep);
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--ice); }
+  ::-webkit-scrollbar-thumb { background: var(--ocean); border-radius: 8px; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-ocean { background-color: var(--ocean); }
+  .bg-ocean-deep { background-color: var(--ocean-deep); }
+  .bg-ice { background-color: var(--ice); }
+  .text-sky { color: var(--sky); }
+  .text-river { color: var(--river); }
+  .text-ice { color: var(--ice); }
+  .border-sky { border-color: var(--sky); }
+  .font-display { font-family: var(--font-display); }
+  .font-mono-accent { font-family: var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-sky { box-shadow: var(--shadow-sky); }
+  .noise {
+    background-image: radial-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse 40s linear infinite; }
+.marquee-pause:hover > * { animation-play-state: paused; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(6deg); }
+}
+.animate-float { animation: float-slow 8s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.btn-shimmer {
+  background-image: linear-gradient(110deg, var(--sky) 30%, oklch(0.88 0.08 215) 50%, var(--sky) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
